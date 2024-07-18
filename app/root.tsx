@@ -1,11 +1,6 @@
-import {
-  Links,
-  Meta,
-  Outlet,
-  Scripts,
-  ScrollRestoration,
-} from "@remix-run/react";
-import "./tailwind.css";
+import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration } from "@remix-run/react";
+// import "./tailwind.css";
+import sharedStyles from "~/styles/shared.css";
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -20,6 +15,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         {children}
         <ScrollRestoration />
         <Scripts />
+        <LiveReload />
       </body>
     </html>
   );
@@ -27,4 +23,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
 export default function App() {
   return <Outlet />;
+}
+
+export function links() {
+  return [{ rel: "stylesheet", href: sharedStyles }];
 }
